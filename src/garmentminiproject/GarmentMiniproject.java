@@ -26,7 +26,9 @@ class Garment {
         this.price = price;
         this.stockQuantity = stockQuantity;
     }
-
+double calculateDiscountPrice(double discountPercentage) {
+        return price * (1 - discountPercentage / 100);
+    }
 }
 
 
