@@ -112,19 +112,18 @@ void placeOrder(Order order, double discountPercentage) {
 }
 
 
-
-
-
 public class GarmentMiniproject {
-
-
     public static void main(String[] args) {
-        Garment g1 = new Garment();
-        g1.name = "Silk";
-        g1.description = "Good Product";
-        g1.price= 600;
-        double x = g1.calculateDiscountPrice(10);
-        System.out.println(x);
+        Garment g1 = new Garment("G1", "Silk Shirt", "Premium Silk Shirt", "L", "Blue", 600, 10);
+        Garment g2 = new Garment("G2", "Cotton Trousers", "Comfortable Cotton Trousers", "M", "Black", 400, 20);
 
+        Order order = new Order("O1", new Date());
+        order.addGarment(g1);
+        order.addGarment(g2);
+
+        Customer customer = new Customer("C1", "NOOR", "noor@email.com", "1234567890", "123 Main St, Cityville");
+
+        customer.placeOrder(order, 10);
     }
 }
+
