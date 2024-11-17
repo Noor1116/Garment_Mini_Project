@@ -32,38 +32,66 @@ double calculateDiscountPrice(double discountPercentage) {
 }
 
 
-
 class Order {
-
     public String orderId;
     public Date orderDate;
     public List<Garment> garments = new ArrayList<>();
     private double totalAmount;
 
+    public Order(String orderId, Date orderDate) {
+        this.orderId = orderId;
+        this.orderDate = orderDate;
+    }
+
     void addGarment(Garment garment) {
         garments.add(garment);
     }
 
-    double calculateTotalAmount() {
+    double calculateTotalAmount(double discountPercentage) {
+        totalAmount = 0;
         for (Garment g : garments) {
-            totalAmount = totalAmount + g.price;
+            totalAmount += g.calculateDiscountPrice(discountPercentage);
         }
         return totalAmount;
     }
 
-    void printOrderDetails() {
-        System.out.println("--------------------------");
-        System.out.println("Order Details");
-        System.out.println("--------------------------");
+    void printOrderDetails(Customer customer, double discountPercentage) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        
+        System.out.println("----------------------- Invoice ------------------------");
+        System.out.println("Order ID: " + orderId);
+        System.out.println("Order Date: " + sdf.format(orderDate));
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Billed to:");
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Name: " + customer.name);
+        System.out.println("Email: " + customer.email);
+        System.out.println("Phone: " + customer.phone);
+        System.out.println("Address: " + customer.address);
+        
+        System.out.println("\nItems:");
+        System.out.println("---------------------------------------------------------");
+        System.out.printf("%-15s %-10s %-15s %-10s\n", "Item", "Quantity", "Unit Price", "Total");
+        System.out.println("---------------------------------------------------------");
+        
+        double subTotal = 0;
         for (Garment g : garments) {
-            System.out.println("Name: " + g.name);
-            System.out.println("Price: " + g.price);
-            System.out.println("Description: " + g.description);
-            System.out.println("--------------------------");
+            double itemTotal = g.price;
+            subTotal += itemTotal;
+            System.out.printf("%-15s %-10d %-15.2f %-10.2f\n", g.name, 1, g.price, itemTotal);
         }
+        
+        System.out.println("---------------------------------------------------------");
+        System.out.printf("Subtotal: %40.2f\n", subTotal);
+        double discountedTotal = calculateTotalAmount(discountPercentage);
+        System.out.printf("Discount Applied: %30.1f%%\n", discountPercentage);
+        System.out.printf("Discounted Price: %32.2f\n", subTotal - discountedTotal);
+        System.out.println("---------------------------------------------------------");
+        System.out.printf("Total Amount after Discount: %21.2f\n", discountedTotal);
+        System.out.println("---------------------------------------------------------");
+        System.out.println("\n| Thank You |");
     }
 }
-
 class Customer {
 
     public String customerId;
