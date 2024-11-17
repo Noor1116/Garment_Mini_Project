@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 
 
 class Garment {
-
     public String id;
     public String name;
     public String description;
@@ -18,16 +17,18 @@ class Garment {
     public double price;
     public int stockQuantity;
 
-
-    void updateStock(int quantity) {
-        this.stockQuantity = quantity;
+    public Garment(String id, String name, String description, String size, String color, double price, int stockQuantity) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.size = size;
+        this.color = color;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
     }
 
-    double calculateDiscountPrice(double discountPercentage) {
-        double discount = price * (discountPercentage / 100);
-        return discount;
-    }
 }
+
 
 class Fabric {
 
