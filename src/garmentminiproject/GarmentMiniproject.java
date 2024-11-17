@@ -104,26 +104,7 @@ class Customer {
 //    }
 }
 
-class Inventory {
 
-    List<Garment> garments;
-
-    void addGarment(Garment garment) {
-        garments.add(garment);
-    }
-
-    void removeGarment(String id) {
-        garments.remove(id);
-    }
-
-    Garment findGarment(String id) {
-        for (Garment g : garments) {
-            if(g.id == id)
-                return g;
-        }
-        return null;
-    }
-}
 
 
 
