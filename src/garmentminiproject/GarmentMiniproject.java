@@ -1,12 +1,9 @@
 
 package garmentminiproject;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.text.SimpleDateFormat;
-
-
 
 class Garment {
     public String id;
@@ -26,11 +23,11 @@ class Garment {
         this.price = price;
         this.stockQuantity = stockQuantity;
     }
-double calculateDiscountPrice(double discountPercentage) {
+
+    double calculateDiscountPrice(double discountPercentage) {
         return price * (1 - discountPercentage / 100);
     }
 }
-
 
 class Order {
     public String orderId;
@@ -92,6 +89,7 @@ class Order {
         System.out.println("\n| Thank You |");
     }
 }
+
 class Customer {
     public String customerId;
     public String name;
@@ -106,11 +104,11 @@ class Customer {
         this.phone = phone;
         this.address = address;
     }
-void placeOrder(Order order, double discountPercentage) {
+
+    void placeOrder(Order order, double discountPercentage) {
         order.printOrderDetails(this, discountPercentage);
     }
 }
-
 
 public class GarmentMiniproject {
     public static void main(String[] args) {
@@ -126,4 +124,3 @@ public class GarmentMiniproject {
         customer.placeOrder(order, 10);
     }
 }
-
