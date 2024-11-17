@@ -106,7 +106,9 @@ class Customer {
         this.phone = phone;
         this.address = address;
     }
-
+void placeOrder(Order order, double discountPercentage) {
+        order.printOrderDetails(this, discountPercentage);
+    }
 }
 
 
