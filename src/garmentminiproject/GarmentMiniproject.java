@@ -1,10 +1,12 @@
 
 package garmentminiproject;
 
-
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.text.SimpleDateFormat;
+
+
 
 class Garment {
 
@@ -15,6 +17,7 @@ class Garment {
     public String color;
     public double price;
     public int stockQuantity;
+
 
     void updateStock(int quantity) {
         this.stockQuantity = quantity;
