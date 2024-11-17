@@ -93,20 +93,20 @@ class Order {
     }
 }
 class Customer {
-
     public String customerId;
     public String name;
     public String email;
     public String phone;
+    public String address;
 
-    void placeOrder(Order order) {
-        order.printOrderDetails();
-        System.out.println("Order Placed");
+    public Customer(String customerId, String name, String email, String phone, String address) {
+        this.customerId = customerId;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
     }
 
-//    List<Order> viewOrders() {
-//        
-//    }
 }
 
 
